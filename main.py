@@ -39,7 +39,7 @@ def traininData():
     y = dataset.iloc[:,-1].values
     
     
-    X_Train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4, random_state=0)
+    X_Train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
     
     
     regressor = LinearRegression()
@@ -70,6 +70,11 @@ def deserializar_parametro():
       
     
         prediction = regressor.predict([ndarray])
+
+        if float(prediction[0]) > 1:
+            prediction = 1
+
+        print(float(prediction[0]))
         
     
         acurracy = {
